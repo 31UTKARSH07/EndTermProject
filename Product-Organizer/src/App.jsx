@@ -1,15 +1,22 @@
 import Navbar from "./Components/Navbar"
-import { BrowserRouter } from "react-router-dom"
-import ProductType from "./Components/ProductType"
+import { BrowserRouter, Routes,Route } from "react-router-dom"
+import { StoreProvider } from "./Context/StoreContext"
+import HomePage from "./Components/HomePage"
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <ProductType/>
-      </BrowserRouter>
+      <StoreProvider>
+        <BrowserRouter>
 
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage></HomePage>}>
+
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </StoreProvider>
     </>
   )
 }
