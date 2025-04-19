@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 export const StoreContext = createContext();
@@ -8,6 +8,7 @@ export const StoreProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [cart, setcart] = useState([])
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -27,7 +28,7 @@ export const StoreProvider = ({ children }) => {
         fetchCategories();
     }, []);
 
-    const fetchProductsByCategory = async (category) => {
+    const fetchProductsByCategory = useCallback(async (category) => {
         try {
             setLoading(true);
             const response = await axios.get(`https://fakestoreapi.com/products/category/${category}`);
@@ -41,13 +42,13 @@ export const StoreProvider = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
-    const fetchAllProducts = async () => {
+    const fetchAllProducts = useCallback(async () => {
         try {
             setLoading(true);
             const response = await axios.get('https://fakestoreapi.com/products');
-            console.log(response)
+            console.log(response);
             setProducts(response.data);
             setError(null);
             return response.data;
@@ -58,9 +59,9 @@ export const StoreProvider = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
-    const fetchProductById = async (id) => {
+    const fetchProductById = useCallback(async (id) => {
         try {
             setLoading(true);
             const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
@@ -73,7 +74,7 @@ export const StoreProvider = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     const value = {
         categories,
@@ -91,4 +92,3 @@ export const StoreProvider = ({ children }) => {
         </StoreContext.Provider>
     );
 };
-

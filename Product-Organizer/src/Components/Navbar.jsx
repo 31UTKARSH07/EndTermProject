@@ -17,8 +17,6 @@ function Navbar() {
                 </div>
                 <div className='hidden md:flex space-x-5'>
                     <a href="#" className="hover:text-blue-300">Home</a>
-                    <a href="#" className="hover:text-blue-300">About</a>
-                    <a href="#" className="hover:text-blue-300">Services</a>
                     <a href="#" className="hover:text-blue-300">Cart</a>
                 </div>
             </div>
