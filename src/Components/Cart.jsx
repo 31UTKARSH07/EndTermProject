@@ -11,7 +11,6 @@ const Cart = () => {
     useEffect(() => {
         const getCartWithDetails = () => {
             if (!products.length) return [];
-
             return cart.map(cartItem => {
                 const product = products.find(p => String(p.id) === String(cartItem.id));
                 if (!product) return null;
