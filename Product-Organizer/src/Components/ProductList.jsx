@@ -160,12 +160,7 @@ const ProductList = () => {
                                 >+</button>
                             </div>
                         )}
-                        <Link
-                            to={`/product/${product.id}`}
-                            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded-lg transition duration-200 text-center font-medium shadow-sm"
-                        >
-                            Details
-                        </Link>
+
                     </div>
                 </div>
             </div>

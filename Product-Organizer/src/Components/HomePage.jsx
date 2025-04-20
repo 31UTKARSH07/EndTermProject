@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../Context/StoreContext';
 import ProductList from './ProductList';
 function HomePage() {
-  const { fetchAllProducts, products, loading, error, categories, fetchProductsByCategory, addToCart, search } = useContext(StoreContext);
+  const { fetchAllProducts, error } = useContext(StoreContext);
 
   useEffect(() => {
     fetchAllProducts();
